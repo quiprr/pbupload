@@ -1,5 +1,5 @@
 //
-//  pbupload.mm
+//  pbupload.m
 //  pbupload
 //
 //  Created by quiprr on 12/24/20.
@@ -11,7 +11,7 @@
 int main (int argc, const char * argv[]) {
     @autoreleasepool {
         NSData *data = [[NSFileHandle fileHandleWithStandardInput] availableData];
-        if (!data) return 1; // This will just hang if no data is in stdin/*data
+        if (!data) return 1; // This will just hang if no data is in stdin/*data so is really useless at this point
         NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 
         dispatch_semaphore_t sema = dispatch_semaphore_create(0);
@@ -41,7 +41,7 @@ int main (int argc, const char * argv[]) {
             if (httpResponse.statusCode == 200) {
                 NSLog(@"Response has status 200. Link copied to clipboard.");
                 NSLog(@"Link: %@", responseString);
-                UIPasteboard *pasteboard = UIPasteboard.generalPasteboard;
+                UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
                 pasteboard.string = responseString;
             } else {
                 NSLog(@"Request seems to have failed, as it did not return status code 200.\nContact 'quiprr@ametrine.dev' or @quiprr on Twitter with a screenshot.");
@@ -52,7 +52,6 @@ int main (int argc, const char * argv[]) {
         [dataTask resume];
         dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
         NSLog(@"We done here.");
-    //});
     }
     return 0;
 }
