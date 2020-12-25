@@ -1,0 +1,9 @@
+Package: pbupload
+Name: pbupload
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Objective-C Pastebin Uploader
+Maintainer: quiprr <quiprr@ametrine.dev>
+Author: quiprr <quiprr@ametrine.dev>
+Section: Utilities
+Tag: role::hacker

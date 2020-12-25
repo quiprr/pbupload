@@ -1,0 +1,17 @@
+---
+name: pbupload
+icmd: true; # no icmd
+
+all:
+  archs:
+    - arm64
+    - arm64e
+
+pbupload:
+  type: tool
+  targetvers: 10.0
+  archs:
+    - arm64
+    - arm64e
+  objc_files:
+    - Sources/pbupload.m
